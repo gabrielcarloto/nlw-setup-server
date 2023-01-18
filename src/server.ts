@@ -5,12 +5,18 @@ import { PrismaClient } from '@prisma/client';
 const app = Fastify();
 const prisma = new PrismaClient();
 
+const PORT = 3333;
+
 app.register(cors);
 
 app.get('/', () => {
   return 'Hello World';
 });
 
-app.listen({
-  port: 3333,
-});
+app
+  .listen({
+    port: PORT,
+  })
+  .then(() => {
+    console.log(`🚀 App listening on port: ${PORT}`);
+  });
